@@ -18,6 +18,7 @@ type RealTimeMovie struct {
 	Day          string `json:"day"`
 }
 
+//中国票房首页 --- 票房榜信息
 func getRealTimeList(url string) {
 	response, err := downloader.GetHttpResponse(url, false)
 	if err != nil {
@@ -41,5 +42,36 @@ func getRealTimeList(url string) {
 			selection.Find("td").Eq(6).Text(),
 		}
 		fmt.Println(RealTimeTicket)
+	})
+}
+
+func getAreaList(url string) {
+	response, err := downloader.GetHttpResponse(url, false)
+	if err != nil {
+		return
+	}
+
+	stringReader := (*string)(unsafe.Pointer(&response))
+	document, err := goquery.NewDocumentFromReader(strings.NewReader(*stringReader))
+
+	if err != nil {
+		return
+	}
+	document.Find("#selArea option").Each(func(i int, selection *goquery.Selection) {
+		country := selection.Text()
+		value, _ := selection.Attr("value")
+		fmt.Println(country, value)
+	})
+
+	document.Find("#selType option").Each(func(i int, selection *goquery.Selection) {
+		movieType := selection.Text()
+		value, _ := selection.Attr("value")
+		fmt.Println(movieType, value)
+	})
+
+	document.Find("#selYear option").Each(func(i int, selection *goquery.Selection) {
+		year := selection.Text()
+		value, _ := selection.Attr("value")
+		fmt.Println(year, value)
 	})
 }

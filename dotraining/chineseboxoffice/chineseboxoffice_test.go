@@ -16,3 +16,15 @@ func TestGetRealTimeList(t *testing.T) {
 		getRealTimeList(test.url)
 	}
 }
+
+func TestGetAreaList(t *testing.T) {
+	tests := []struct {
+		url string
+	}{
+		{url.CBooo_Movie},
+	}
+
+	for _, test := range tests {
+		getAreaList(test.url)
+	}
+}
