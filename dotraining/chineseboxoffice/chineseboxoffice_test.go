@@ -28,3 +28,7 @@ func TestGetAreaList(t *testing.T) {
 		getAreaList(test.url)
 	}
 }
+
+func TestGetCboooRankList(t *testing.T) {
+	getCboooRankList()
+}
