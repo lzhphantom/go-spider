@@ -11,6 +11,7 @@ var (
 	CBooo_Movie      = "http://www.cbooo.cn/movies"
 	Cbooo_RealUrl    = "http://www.cbooo.cn/Mdata/getMdata_movie?area=%s&type=0&year=0&initial=全部&pIndex=%d"
 	MaoYanByYear     = "https://piaofang.maoyan.com/rankings/year?year=%d&limit=100&tab=%d"
+	NuoMiRankURL     = "https://mdianying.baidu.com/api/rank/rankPage"
 )
 
 func GetMaoYanUrl(year int) string {
